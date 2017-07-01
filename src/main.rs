@@ -2,6 +2,7 @@
 extern crate clap;
 
 use clap::{App, Arg, ArgMatches};
+use std::io::{self, Write};
 
 fn parse_args() -> ArgMatches<'static> {
     App::new("yes")
@@ -15,18 +16,14 @@ fn parse_args() -> ArgMatches<'static> {
 
 fn main() {
     let args = parse_args();
+    let mut value = String::from(args.value_of("STRING").unwrap_or("y"));
+    value.push_str("\n");
 
-    let value = args.value_of("STRING");
-    match value {
-        Some(s) => {
-            loop {
-                println!("{}", s);
-            }
-        }
-        None => {
-            loop {
-                println!("y");
-            }
-        }
+    let repeated_string = value.repeat(value.len() * 1000);
+    let output = repeated_string.as_bytes();
+
+    let mut writer = io::stdout();
+    loop {
+        writer.write_all(output).unwrap();
     }
 }
