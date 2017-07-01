@@ -1,0 +1,6 @@
+[package]
+name = "yes-rs"
+version = "0.1.0"
+authors = ["Iain H. <iain@spiralpoint.org>"]
+
+[dependencies]
