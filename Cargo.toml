@@ -1,6 +1,8 @@
 [package]
 name = "yes-rs"
+description = "yes - output a string repeatedly until killed"
 version = "0.1.0"
 authors = ["Iain H. <iain@spiralpoint.org>"]
 
 [dependencies]
+clap = "2.25"
